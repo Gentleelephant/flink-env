@@ -31,7 +31,7 @@ RUN echo "s3.access-key: flink-sql" >> /opt/flink/conf/flink-conf.yaml; \
     echo "s3.secret-key: flink-sql" >> /opt/flink/conf/flink-conf.yaml; \
     echo "fs.s3a.endpoint: http://minio:9000" >> /opt/flink/conf/flink-conf.yaml; \
     echo "fs.s3a.path.style.access: true" >> /opt/flink/conf/flink-conf.yaml; \
-    sed -i '/^taskmanager.numberOfTaskSlots.*/d'; \
+    sed -i '/^taskmanager.numberOfTaskSlots.*/d' /opt/flink/conf/flink-conf.yaml; \
     echo "taskmanager.numberOfTaskSlots: 10" >> /opt/flink/conf/flink-conf.yaml; \
     sed -i -e 's/taskmanager.memory.process.size: 1568m/taskmanager.memory.process.size: 1728m/g' /opt/flink/conf/flink-conf.yaml; \
     echo "taskmanager.memory.jvm-metaspace.size: 256m" >> /opt/flink/conf/flink-conf.yaml; \
