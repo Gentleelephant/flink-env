@@ -26,12 +26,13 @@ RUN mkdir /opt/flink/plugins/s3; \
     wget -P /opt/flink/lib https://repo.maven.apache.org/maven2/org/apache/flink/flink-shaded-hadoop-2-uber/2.7.5-8.0/flink-shaded-hadoop-2-uber-2.7.5-8.0.jar; \
     wget -P /opt/flink/lib https://github.com/knaufk/flink-faker/releases/download/v0.2.0/flink-faker-0.2.0.jar;
 
+#sed -i '/^taskmanager.numberOfTaskSlots.*/d' /opt/flink/conf/flink-conf.yaml; \
+#echo "taskmanager.numberOfTaskSlots: 10" >> /opt/flink/conf/flink-conf.yaml; \
+
 # adjust configuration
 RUN echo "s3.access-key: flink-sql" >> /opt/flink/conf/flink-conf.yaml; \
     echo "s3.secret-key: flink-sql" >> /opt/flink/conf/flink-conf.yaml; \
     echo "fs.s3a.endpoint: http://minio:9000" >> /opt/flink/conf/flink-conf.yaml; \
     echo "fs.s3a.path.style.access: true" >> /opt/flink/conf/flink-conf.yaml; \
-    sed -i '/^taskmanager.numberOfTaskSlots.*/d' /opt/flink/conf/flink-conf.yaml; \
-    echo "taskmanager.numberOfTaskSlots: 10" >> /opt/flink/conf/flink-conf.yaml; \
     sed -i -e 's/taskmanager.memory.process.size: 1568m/taskmanager.memory.process.size: 1728m/g' /opt/flink/conf/flink-conf.yaml; \
     echo "taskmanager.memory.jvm-metaspace.size: 256m" >> /opt/flink/conf/flink-conf.yaml; \
