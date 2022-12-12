@@ -21,6 +21,7 @@
 FROM flink:1.11.1-scala_2.11
 
 # move and download dependencies
+# wget -P /opt/flink/lib https://repo1.maven.org/maven2/mysql/mysql-connector-java/5.1.48/mysql-connector-java-5.1.48.jar; \
 RUN mkdir /opt/flink/plugins/s3; \
     mv /opt/flink/opt/flink-s3-fs-hadoop-1.11.1.jar /opt/flink/plugins/s3; \
     wget -P /opt/flink/lib https://repo.maven.apache.org/maven2/org/apache/flink/flink-shaded-hadoop-2-uber/2.7.5-8.0/flink-shaded-hadoop-2-uber-2.7.5-8.0.jar; \
@@ -29,8 +30,7 @@ RUN mkdir /opt/flink/plugins/s3; \
     wget -P /opt/flink/lib https://repo1.maven.org/maven2/org/apache/flink/flink-sql-connector-kafka_2.11/1.11.1/flink-sql-connector-kafka_2.11-1.11.1.jar; \
     wget -P /opt/flink/lib https://repo1.maven.org/maven2/org/apache/flink/flink-sql-connector-elasticsearch6_2.11/1.11.1/flink-sql-connector-elasticsearch6_2.11-1.11.1.jar; \
     wget -P /opt/flink/lib https://repo1.maven.org/maven2/org/apache/flink/flink-jdbc_2.11/1.11.1/flink-jdbc_2.11-1.11.1.jar; \
-    wget -P /opt/flink/lib https://repo1.maven.org/maven2/mysql/mysql-connector-java/5.1.48/mysql-connector-java-5.1.48.jar;
-
+    wget -P /opt/sql-client/lib/ https://repo.maven.apache.org/maven2/mysql/mysql-connector-java/8.0.19/mysql-connector-java-8.0.19.jar;
 #sed -i '/^taskmanager.numberOfTaskSlots.*/d' /opt/flink/conf/flink-conf.yaml; \
 #echo "taskmanager.numberOfTaskSlots: 10" >> /opt/flink/conf/flink-conf.yaml; \
 
