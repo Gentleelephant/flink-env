@@ -57,7 +57,7 @@ RUN wget -P /opt/sql-client/lib/ https://repo.maven.apache.org/maven2/org/apache
     wget -P /opt/sql-client/lib/ https://repo.maven.apache.org/maven2/org/apache/flink/flink-connector-jdbc_2.11/${FLINK_VERSION}/flink-connector-jdbc_2.11-${FLINK_VERSION}.jar; \
     wget -P /opt/sql-client/lib/ https://repo.maven.apache.org/maven2/mysql/mysql-connector-java/8.0.19/mysql-connector-java-8.0.19.jar; \
     wget -P /opt/sql-client/lib https://github.com/knaufk/flink-faker/releases/download/v0.2.0/flink-faker-0.2.0.jar; \
-    wget -P /opt/sql-client/lib https://repo1.maven.org/maven2/org/apache/flink/flink-sql-connector-elasticsearch6_2.11/1.11.1/flink-sql-connector-elasticsearch6_2.11-1.11.1.jar;
+    wget -P /opt/sql-client/lib https://repo.maven.apache.org/maven2/org/apache/flink/flink-sql-connector-elasticsearch6_2.11/1.11.1/flink-sql-connector-elasticsearch6_2.11-1.11.1.jar;
 # # Create data folders
 #     mkdir -p /opt/data; \
 #     mkdir -p /opt/data/stream; \
