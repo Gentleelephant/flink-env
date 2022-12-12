@@ -26,10 +26,10 @@ RUN mkdir /opt/flink/plugins/s3; \
     mv /opt/flink/opt/flink-s3-fs-hadoop-1.11.1.jar /opt/flink/plugins/s3; \
     wget -P /opt/flink/lib https://repo.maven.apache.org/maven2/org/apache/flink/flink-shaded-hadoop-2-uber/2.7.5-8.0/flink-shaded-hadoop-2-uber-2.7.5-8.0.jar; \
     wget -P /opt/flink/lib https://github.com/knaufk/flink-faker/releases/download/v0.2.0/flink-faker-0.2.0.jar; \
-    wget -P /opt/flink/lib https://repo1.maven.org/maven2/org/apache/flink/flink-json/1.11.1/flink-json-1.11.1.jar; \
-    wget -P /opt/flink/lib https://repo1.maven.org/maven2/org/apache/flink/flink-sql-connector-kafka_2.11/1.11.1/flink-sql-connector-kafka_2.11-1.11.1.jar; \
-    wget -P /opt/flink/lib https://repo1.maven.org/maven2/org/apache/flink/flink-sql-connector-elasticsearch6_2.11/1.11.1/flink-sql-connector-elasticsearch6_2.11-1.11.1.jar; \
-    wget -P /opt/flink/lib https://repo1.maven.org/maven2/org/apache/flink/flink-jdbc_2.11/1.11.1/flink-jdbc_2.11-1.11.1.jar; \
+    wget -P /opt/flink/lib https://repo.maven.org/maven2/org/apache/flink/flink-json/1.11.1/flink-json-1.11.1.jar; \
+    wget -P /opt/flink/lib https://repo.maven.org/maven2/org/apache/flink/flink-sql-connector-kafka_2.11/1.11.1/flink-sql-connector-kafka_2.11-1.11.1.jar; \
+    wget -P /opt/flink/lib https://repo.maven.org/maven2/org/apache/flink/flink-sql-connector-elasticsearch6_2.11/1.11.1/flink-sql-connector-elasticsearch6_2.11-1.11.1.jar; \
+    wget -P /opt/flink/lib https://repo.maven.org/maven2/org/apache/flink/flink-jdbc_2.11/1.11.1/flink-jdbc_2.11-1.11.1.jar; \
     wget -P /flink/lib/ https://repo.maven.apache.org/maven2/mysql/mysql-connector-java/8.0.19/mysql-connector-java-8.0.19.jar; \
     wget -P /opt/flink/lib/ https://repo.maven.apache.org/maven2/org/apache/flink/flink-connector-filesystem_2.11/1.11.1/flink-connector-filesystem_2.11-1.11.1.jar; \
 #sed -i '/^taskmanager.numberOfTaskSlots.*/d' /opt/flink/conf/flink-conf.yaml; \
