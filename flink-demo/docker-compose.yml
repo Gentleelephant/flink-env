@@ -2,7 +2,7 @@ version: '2.1'
 services:
   sql-client:
     # build: ./images/client-image
-    image: flink-env_sql-client:latest
+    image: birdhk/sql-client:latest
     # command: "java -classpath /opt/data/data-producer.jar com.ververica.sql_training.data_producer.TaxiRecordProducer --input file /opt/data --output kafka kafka:9092 --speedup 10.0"
     command: "tail -f /dev/null"
     depends_on:
@@ -16,7 +16,7 @@ services:
       KAFKA_BOOTSTRAP: kafka
       MYSQL_HOST: mysql
   jobmanager:
-    image: flink-env_jobmanager:latest
+    image: birdhk/jobmanager:latest
     # build: ./images/flink-image
     hostname: "jobmanager"
     expose:
@@ -27,7 +27,7 @@ services:
     environment:
       - JOB_MANAGER_RPC_ADDRESS=jobmanager
   taskmanager:
-    image: flink-env_taskmanager:latest
+    image: birdhk/taskmanager:latest
     # build: ./images/flink-image
     expose:
       - "6121"
