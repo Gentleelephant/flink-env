@@ -17,9 +17,9 @@ services:
       nofile:
         soft: 65536
         hard: 65536
-            volumes:
-        - es-data:/etc/localtime
-        - es-data:/usr/share/elasticsearch/data
+    volumes:
+      - es-data:/etc/localtime
+      - es-data:/usr/share/elasticsearch/data
   kibana:
     image: docker.elastic.co/kibana/kibana:7.6.0
     ports:
