@@ -32,40 +32,22 @@ services:
     #   - 9605:9600 # required for Performance Analyzer
     # networks:
     #   - opensearch-net
-  # opensearch-node2:
-    # image: opensearchproject/opensearch:latest
-    # container_name: opensearch-node2
-    # environment:
-    #   - cluster.name=opensearch-cluster
-    #   - node.name=opensearch-node2
-    #   - discovery.seed_hosts=opensearch-node1,opensearch-node2
-    #   - cluster.initial_cluster_manager_nodes=opensearch-node1,opensearch-node2
-    #   - bootstrap.memory_lock=true
-    #   - "OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m"
-    # ulimits:
-    #   memlock:
-    #     soft: -1
-    #     hard: -1
-    #   nofile:
-    #     soft: 65536
-    #     hard: 65536
-    # volumes:
-    #   - opensearch-data2:/usr/share/opensearch/data
-    # networks:
-    #   - opensearch-net
   opensearch-dashboards:
-    image: opensearchproject/opensearch-dashboards:latest
-    container_name: opensearch-dashboards
+  opensearch_dashboards:
+    container_name: opensearch_dashboards
+    image: opensearchproject/opensearch-dashboards:1.1.0
+    restart: unless-stopped
+    # environment:
+    #   NODE_OPTIONS: --max-old-space-size=2048   # 如果查询的数据过大，需要增加 node.js 最大占用内存
     ports:
-      - 5605:5601
-    expose:
-      - "5601"
-    environment:
-      OPENSEARCH_HOSTS: '["https://opensearch-node:9200"]'
-    networks:
-      - opensearch-net
+      - 5601:5601
+    volumes:
+      - opensearch_dashboards-config:/usr/share/opensearch-dashboards/config
+      - opensearch_dashboards-data:/usr/share/opensearch-dashboards/data
 volumes:
   opensearch-config:
   opensearch-data:
+  opensearch_dashboards-config:
+  opensearch_dashboards-data:
 networks:
   opensearch-net:
