@@ -20,8 +20,8 @@ services:
     volumes:
       - opensearch-data:/usr/share/opensearch/data
     ports:
-      - 9205:9205
-      - 9605:9605 # required for Performance Analyzer
+      - 9205:9200
+      - 9605:9600 # required for Performance Analyzer
     networks:
       - opensearch-net
   # opensearch-node2:
@@ -49,9 +49,9 @@ services:
     image: opensearchproject/opensearch-dashboards:latest
     container_name: opensearch-dashboards
     ports:
-      - 5605:5605
+      - 5605:5601
     expose:
-      - "5605"
+      - "5601"
     environment:
       OPENSEARCH_HOSTS: '["https://opensearch-node:9205"]'
     networks:
