@@ -20,10 +20,13 @@ services:
     volumes:
       - opensearch-data:/usr/share/opensearch/data
     ports:
-      - 9205:9200
-      - 9605:9600 # required for Performance Analyzer
+      - 9305:9300
+      - 9650:9650 # required for Performance Analyzer
     networks:
       - opensearch-net
+    expose:
+      - "9300"
+      - "9650"
   # opensearch-node2:
     # image: opensearchproject/opensearch:latest
     # container_name: opensearch-node2
