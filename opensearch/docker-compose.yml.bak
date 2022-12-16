@@ -5,39 +5,11 @@ services:
     container_name: opensearch
     image: opensearchproject/opensearch:1.1.0
     restart: unless-stopped
-    environment:
-      - cluster.name=opensearch
-      - node.name=opensearch-node
-      - discovery.seed_hosts=opensearch-node
-      - cluster.initial_cluster_manager_nodes=opensearch-node
-      - bootstrap.memory_lock=true
     ports:
       - 9200:9200
     volumes:
-      - opensearch-config:/usr/share/opensearch/config
-      - opensearch-data:/usr/share/opensearch/data
-  # opensearch-node:
-    # image: opensearchproject/opensearch:latest
-    # container_name: opensearch-node
-    # environment:
-    #   - node.name=opensearch-node
-    #   - discovery.seed_hosts=opensearch-node
-    #   - bootstrap.memory_lock=true # along with the memlock settings below, disables swapping
-    #   - "OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m" # minimum and maximum Java heap size, recommend setting both to 50% of system RAM
-    # # ulimits:
-    # #   memlock:
-    # #     soft: -1
-    # #     hard: -1
-    # #   nofile:
-    # #     soft: 65536 # maximum number of open files for the OpenSearch user, set to at least 65536 on modern systems
-    # #     hard: 65536
-    # volumes:
-    #   - opensearch-data:/usr/share/opensearch/data
-    # ports:
-    #   - 9205:9200
-    #   - 9605:9600 # required for Performance Analyzer
-    # networks:
-    #   - opensearch-net
+      - ./config:/usr/share/opensearch/config
+      - ./data:/usr/share/opensearch/data
   opensearch_dashboards:
     container_name: opensearch_dashboards
     image: opensearchproject/opensearch-dashboards:1.1.0
@@ -47,12 +19,5 @@ services:
     ports:
       - 5601:5601
     volumes:
-      - opensearch_dashboards-config:/usr/share/opensearch-dashboards/config
-      - opensearch_dashboards-data:/usr/share/opensearch-dashboards/data
-volumes:
-  opensearch-config:
-  opensearch-data:
-  opensearch_dashboards-config:
-  opensearch_dashboards-data:
-networks:
-  opensearch-net:
+      - ./config:/usr/share/opensearch-dashboards/config
+      - ./data:/usr/share/opensearch-dashboards/data
