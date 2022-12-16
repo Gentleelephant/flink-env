@@ -19,7 +19,7 @@ services:
         hard: 65536
     volumes:
       - opensearch-data1:/usr/share/opensearch/data
-      - opensearch-config1:/usr/share/opensearch/config
+      - ./config1:/usr/share/opensearch/config
     ports:
       - 9200:9200
       - 9600:9600 # required for Performance Analyzer
@@ -44,11 +44,11 @@ services:
         hard: 65536
     volumes:
       - opensearch-data2:/usr/share/opensearch/data
-      - opensearch-config2:/usr/share/opensearch/config
+      - ./config2:/usr/share/opensearch/config
     networks:
       - opensearch-net
   opensearch-dashboards:
-    image: opensearchproject/opensearch-dashboards:1.1.0
+    image: opensearchproject/opensearh-dashboards:1.1.0
     container_name: opensearch-dashboards
     ports:
       - 5601:5601
